@@ -1,0 +1,3966 @@
+/* ===== CodeStitch Base Setup (required) ===== */
+:root {
+  --primary: #B21E2B;
+  --primaryLight: #ffd2cc;
+  --secondary: #1C7C54;
+
+  --headerColor: #1a1a1a;
+  --bodyTextColor: #4e4b66;
+  --bodyTextColorWhite: #ffffff;
+
+  --sectionPadding: clamp(3rem, 6vw, 5rem);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--bodyTextColor);
+}
+html {
+  scroll-behavior: smooth;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/*-- -------------------------- -->
+<---     Mobile Navigation      -->
+<--- -------------------------- -*/
+/* Mobile - 1023px */
+@media only screen and (max-width: 63.9375rem) {
+  body.cs-open {
+    overflow: hidden;
+  }
+  body.scroll #cs-navigation {
+    width: 100%;
+    max-width: 100%;
+    top: 0;
+  }
+  body.scroll #cs-navigation:before {
+    border-radius: 0;
+  }
+  body.scroll #cs-navigation .cs-ul-wrapper {
+    top: 100%;
+  }
+  #cs-navigation {
+    width: 94%;
+    max-width: 80rem;
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    /* 12px - 24px */
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+    /* 12px - 24px */
+    border-radius: clamp(0.75rem, 2vw, 1.5rem);
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    z-index: 10000;
+    transform: translateX(-50%);
+    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
+  }
+  #cs-navigation:before {
+    /* background color */
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    opacity: 1;
+    /* 12px - 24px */
+    border-radius: clamp(0.75rem, 2vw, 1.5rem);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.2s, border-radius 0.3s ease-in-out;
+  }
+  #cs-navigation.cs-active:before {
+    transform: translateX(-50%) scale(1.03);
+  }
+  #cs-navigation.cs-active .cs-toggle {
+    transform: rotate(180deg);
+  }
+  #cs-navigation.cs-active .cs-ul-wrapper {
+    transform: scaleY(1);
+    transition-delay: 0.15s;
+  }
+  #cs-navigation.cs-active .cs-li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #cs-navigation .cs-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  #cs-navigation .cs-logo {
+    width: auto;
+    max-width: 12.5rem;
+    height: 100%;
+    margin: 0 auto 0 0;
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 10;
+  }
+  #cs-navigation .cs-logo img {
+    width: 100%;
+    height: 100%;
+    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+    object-fit: contain;
+  }
+  #cs-navigation .cs-toggle {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 0 0 auto;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.6s;
+  }
+  #cs-navigation .cs-nav {
+    /* sends it to the right in the 3rd position */
+    order: 3;
+  }
+  #cs-navigation .cs-contact-group {
+    display: none;
+    position: relative;
+    z-index: 10;
+  }
+  #cs-navigation .cs-phone {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-decoration: none;
+    margin: 0;
+    color: var(--headerColor);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  #cs-navigation .cs-phone-icon {
+    width: 1.5rem;
+    height: auto;
+    display: block;
+  }
+  #cs-navigation .cs-social {
+    display: none;
+  }
+  #cs-navigation .cs-active .cs-line1 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+  #cs-navigation .cs-active .cs-line2 {
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+    transform-origin: center;
+  }
+  #cs-navigation .cs-active .cs-line3 {
+    opacity: 0;
+    bottom: 100%;
+  }
+  #cs-navigation .cs-box {
+    /* 24px - 28px */
+    width: clamp(1.5rem, 2vw, 1.75rem);
+    height: 1rem;
+    position: relative;
+  }
+  #cs-navigation .cs-line {
+    width: 100%;
+    height: 2px;
+    background-color: #fafbfc;
+    border-radius: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #cs-navigation .cs-line1 {
+    top: 0;
+    transition: transform 0.5s, top 0.3s, left 0.3s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    transform-origin: center;
+  }
+  #cs-navigation .cs-line2 {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: top 0.3s, left 0.3s, transform 0.5s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+  #cs-navigation .cs-line3 {
+    bottom: 0;
+    transition: bottom 0.3s, opacity 0.3s;
+  }
+  #cs-navigation .cs-ul-wrapper {
+    width: 100%;
+    height: auto;
+    padding-bottom: 2.4em;
+    background-color: #fff;
+    border-radius: 0 0 1.5rem 1.5rem;
+    position: absolute;
+    top: 85%;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    transform: scaleY(0);
+    transition: transform 0.4s;
+    transform-origin: top;
+  }
+  #cs-navigation .cs-ul {
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    margin: 0;
+    padding: 4rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.25rem;
+    overflow: auto;
+  }
+  #cs-navigation .cs-li {
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin-right: 0;
+    opacity: 0;
+    /* transition from these values */
+    transform: translateY(-70/16rem);
+    transition: transform 0.6s, opacity 0.9s;
+  }
+  #cs-navigation .cs-li:nth-of-type(1) {
+    transition-delay: 0.05s;
+  }
+  #cs-navigation .cs-li:nth-of-type(2) {
+    transition-delay: 0.1s;
+  }
+  #cs-navigation .cs-li:nth-of-type(3) {
+    transition-delay: 0.15s;
+  }
+  #cs-navigation .cs-li:nth-of-type(4) {
+    transition-delay: 0.2s;
+  }
+  #cs-navigation .cs-li:nth-of-type(5) {
+    transition-delay: 0.25s;
+  }
+  #cs-navigation .cs-li:nth-of-type(6) {
+    transition-delay: 0.3s;
+  }
+  #cs-navigation .cs-li:nth-of-type(7) {
+    transition-delay: 0.35s;
+  }
+  #cs-navigation .cs-li:nth-of-type(8) {
+    transition-delay: 0.4s;
+  }
+  #cs-navigation .cs-li:nth-of-type(9) {
+    transition-delay: 0.45s;
+  }
+  #cs-navigation .cs-li:nth-of-type(10) {
+    transition-delay: 0.5s;
+  }
+  #cs-navigation .cs-li:nth-of-type(11) {
+    transition-delay: 0.55s;
+  }
+  #cs-navigation .cs-li:nth-of-type(12) {
+    transition-delay: 0.6s;
+  }
+  #cs-navigation .cs-li:nth-of-type(13) {
+    transition-delay: 0.65s;
+  }
+  #cs-navigation .cs-li-link {
+    /* 16px - 24px */
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    line-height: 1.2em;
+    text-decoration: none;
+    margin: 0;
+    color: var(--headerColor);
+    display: inline-block;
+    position: relative;
+  }
+  #cs-navigation .cs-li-link.cs-active {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-li-link:hover {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-button-solid {
+    display: none;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #cs-navigation .cs-contact-group {
+    display: block;
+  }
+}
+/*-- -------------------------- -->
+<---     Navigation Dropdown    -->
+<--- -------------------------- -*/
+/* Mobile - 1023px */
+@media only screen and (max-width: 63.9375rem) {
+  #cs-navigation .cs-li {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+  #cs-navigation .cs-dropdown {
+    color: var(--bodyTextColorWhite);
+    position: relative;
+  }
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-ul {
+    height: auto;
+    margin: 0.75rem 0 0 0;
+    padding: 0.75rem 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  #cs-navigation .cs-dropdown.cs-active .cs-drop-link {
+    opacity: 1;
+  }
+  #cs-navigation .cs-dropdown .cs-li-link {
+    position: relative;
+    transition: opacity 0.3s;
+  }
+  #cs-navigation .cs-drop-icon {
+    width: 0.9375rem;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    right: -1.25rem;
+    transform: translateY(-50%);
+  }
+  #cs-navigation .cs-drop-ul {
+    width: 100%;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+    opacity: 0;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+    transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, visibility 0.3s;
+  }
+  #cs-navigation .cs-drop-li {
+    list-style: none;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link {
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    color: #fff;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #cs-navigation .cs-dropdown {
+    position: relative;
+  }
+  #cs-navigation .cs-dropdown:hover {
+    cursor: pointer;
+  }
+  #cs-navigation .cs-dropdown:hover .cs-drop-ul {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+  }
+  #cs-navigation .cs-dropdown:hover .cs-drop-li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #cs-navigation .cs-drop-icon {
+    width: 0.9375rem;
+    height: auto;
+    display: inline-block;
+  }
+  #cs-navigation .cs-drop-ul {
+    min-width: 12.5rem;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: inset rgba(149, 157, 165, 0.1) 0px 8px 10px;
+    opacity: 0;
+    border-bottom: 5px solid var(--primary);
+    border-radius: 0 0 1.5rem 1.5rem;
+    visibility: hidden;
+    /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
+    position: absolute;
+    top: 100%;
+    z-index: -100;
+    overflow: hidden;
+    transform: scaleY(0);
+    transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+    transform-origin: top;
+  }
+  #cs-navigation .cs-drop-li {
+    font-size: 1rem;
+    text-decoration: none;
+    list-style: none;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    display: block;
+    transform: translateY(-0.625rem);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(1) {
+    transition-delay: 0.05s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(2) {
+    transition-delay: 0.1s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(3) {
+    transition-delay: 0.15s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(4) {
+    transition-delay: 0.2s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(5) {
+    transition-delay: 0.25s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(6) {
+    transition-delay: 0.3s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(7) {
+    transition-delay: 0.35s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(8) {
+    transition-delay: 0.4s;
+  }
+  #cs-navigation .cs-drop-li:nth-of-type(9) {
+    transition-delay: 0.45s;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-transform: capitalize;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    padding: 0.75rem;
+    color: var(--headerColor);
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  #cs-navigation .cs-li-link.cs-drop-link:hover {
+    color: var(--bodyTextColorWhite);
+    background-color: var(--primary);
+  }
+  #cs-navigation .cs-li-link.cs-drop-link:before {
+    display: none;
+  }
+}
+/*-- -------------------------- -->
+<---     Desktop Navigation     -->
+<--- -------------------------- -*/
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  body.scroll #cs-navigation {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    top: 0;
+  }
+  #cs-navigation {
+    width: 94%;
+    max-width: 90rem;
+    height: 6rem;
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    /* 12px - 24px */
+    padding: clamp(0.75rem, 2vw, 1.5rem) 0;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* 12px - 24px */
+    border-radius: clamp(0.75rem, 2vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    z-index: 10000;
+    transform: translateX(-50%);
+    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
+  }
+  #cs-navigation .cs-container {
+    width: 100%;
+    max-width: 90rem;
+    margin: auto;
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  #cs-navigation .cs-toggle {
+    display: none;
+  }
+  #cs-navigation .cs-logo {
+    width: 18.4%;
+    max-width: 21.875rem;
+    height: 2rem;
+    /* margin-right auto pushes everything away from it to the right */
+    margin: 0 auto 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 100;
+  }
+  #cs-navigation .cs-logo img {
+    width: auto;
+    height: 100%;
+    /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+    object-fit: contain;
+  }
+  #cs-navigation .cs-contact-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  #cs-navigation .cs-phone {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-decoration: none;
+    margin: 0;
+    color: var(--headerColor);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  #cs-navigation .cs-phone-icon {
+    width: 1.5rem;
+    height: auto;
+    display: block;
+  }
+  #cs-navigation .cs-social {
+    height: 2rem;
+    opacity: 1;
+    display: none;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.3s, visibility 0.3s, height 0.3s;
+  }
+  #cs-navigation .cs-social-link {
+    text-decoration: none;
+    width: 2rem;
+    height: 2rem;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  #cs-navigation .cs-social-link:hover {
+    background-color: var(--primary);
+  }
+  #cs-navigation .cs-social-link:hover .cs-social-icon {
+    opacity: 1;
+    filter: grayscale(1) brightness(10000%);
+  }
+  #cs-navigation .cs-social-icon {
+    width: 0.75rem;
+    height: auto;
+    opacity: 0.6;
+    display: block;
+    transition: opacity 0.3s;
+  }
+  #cs-navigation .cs-ul-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* absolutely positioned to be dead center */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #cs-navigation .cs-ul {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* 20px - 36px */
+    gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  }
+  #cs-navigation .cs-li {
+    list-style: none;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    /* prevent flexbox from squishing it */
+    flex: none;
+  }
+  #cs-navigation .cs-li-link {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-decoration: none;
+    margin: 0;
+    color: var(--headerColor);
+    display: block;
+    position: relative;
+    transition: color 0.3s;
+  }
+  #cs-navigation .cs-li-link:hover {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-li-link.cs-active {
+    color: var(--primary);
+  }
+  #cs-navigation .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    /* 46px - 56px */
+    line-height: clamp(2.875em, 5.5vw, 3.5em);
+    text-align: center;
+    text-decoration: none;
+    min-width: 9.375rem;
+    margin: 0;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    padding: 0 2rem;
+    color: #fff;
+    background-color: var(--primary);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  #cs-navigation .cs-button-solid:before {
+    content: "";
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 0.3s;
+  }
+  #cs-navigation .cs-button-solid:hover {
+    color: #1a1a1a;
+  }
+  #cs-navigation .cs-button-solid:hover:before {
+    width: 100%;
+  }
+}
+/* Large Desktop - 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #cs-navigation .cs-social {
+    display: flex;
+  }
+}
+                                
+
+/*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #hero-1946 {
+    padding: var(--sectionPadding);
+    /* 160px - 200px */
+    padding-top: clamp(10rem, 20vw, 12.5rem);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  #hero-1946 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  #hero-1946 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: center;
+    width: 100%;
+    /* 40px - 52px */
+    margin-bottom: clamp(2.5rem, 5vw, 3.25rem);
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  #hero-1946 .cs-flex {
+    /* prevents flexbox from squishing it */
+    flex: none;
+  }
+  #hero-1946 .cs-title {
+    /* 39px - 61px */
+    font-size: clamp(2.438rem, 5vw, 3.813rem);
+  }
+  #hero-1946 .cs-text {
+    margin-bottom: 1.25rem;
+  }
+  #hero-1946 .cs-button-solid {
+    font-size: 1rem;
+    font-weight: 700;
+    /* 46px - 56px */
+    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    text-align: center;
+    text-decoration: none;
+    min-width: 9.375rem;
+    margin: 0;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    /* 32px - 48px */
+    padding: 0 clamp(2rem, 4vw, 3rem);
+    background-color: var(--primary);
+    color: var(--bodyTextColorWhite);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+    transition: background-color 0.3s;
+  }
+  #hero-1946 .cs-button-solid:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  #hero-1946 .cs-picture {
+    width: 100%;
+    /* 280px - 510px */
+    height: clamp(17.5rem, 58.6vw, 31.875rem);
+    /* 16px - 20px */
+    margin-bottom: clamp(1rem, 2vw, 1.25rem);
+    display: block;
+    position: relative;
+  }
+  #hero-1946 .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2.5rem;
+    position: absolute;
+  }
+  #hero-1946 .cs-card-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(12, 1fr);
+    /* 16px - 20px */
+    gap: clamp(1rem, 2vw, 1.25rem);
+  }
+  #hero-1946 .cs-item {
+    text-align: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    /* 24px - 32px */
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background-color: #F7F7F7;
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: span 12;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.3s;
+  }
+  #hero-1946 .cs-item:hover {
+    border-color: var(--primary);
+  }
+  #hero-1946 .cs-item:hover .cs-h3 {
+    color: var(--primary);
+  }
+  #hero-1946 .cs-item:hover .cs-icon {
+    transform: rotateY(360deg);
+  }
+  #hero-1946 .cs-icon-picture {
+    margin-bottom: 1.25rem;
+    perspective: 700px;
+    transform-style: preserve-3d;
+  }
+  #hero-1946 .cs-icon {
+    width: 2.5rem;
+    height: auto;
+    display: block;
+    transition: transform 0.5s;
+  }
+  #hero-1946 .cs-h3 {
+    font-size: 1.25rem;
+    line-height: 1.5em;
+    text-align: inherit;
+    margin: 0;
+    margin-bottom: 0.75rem;
+    color: var(--headerColor);
+    transition: color 0.3s;
+  }
+  #hero-1946 .cs-item-text {
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.5em;
+    text-align: inherit;
+    margin: 0;
+    color: var(--bodyTextColor);
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #hero-1946 .cs-text {
+    font-size: 1.25rem;
+  }
+  #hero-1946 .cs-item {
+    text-align: left;
+    margin: 0;
+    align-items: flex-start;
+    grid-column: span 6;
+  }
+}
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #hero-1946 .cs-content {
+    display: flex;
+    flex-direction: column;
+  }
+  #hero-1946 .cs-title {
+    max-width: 46.875rem;
+  }
+  #hero-1946 .cs-item {
+    grid-column: span 3;
+  }
+}
+/* Large Desktop 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #hero-1946 .cs-title {
+    margin: 0;
+  }
+  #hero-1946 .cs-container {
+    flex-direction: column;
+  }
+  #hero-1946 .cs-content {
+    text-align: left;
+    max-width: 80rem;
+    gap: 1.25rem;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  #hero-1946 .cs-flex {
+    width: 50%;
+    max-width: 39.375rem;
+  }
+}
+ 
+/*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #services-1628 {
+    padding: var(--sectionPadding);
+    background-color: #f7f7f7;
+  }
+  #services-1628 .cs-container {
+    width: 100%;
+    /* changes to 1280px at tablet */
+    max-width: 34.375em;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #services-1628 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: flex-start;
+  }
+  #services-1628 .cs-title {
+    max-width: 20ch;
+  }
+  #services-1628 .cs-text {
+    max-width: 40rem;
+    position: relative;
+    z-index: 1;
+  }
+  #services-1628 .cs-text:after {
+    /* divider line */
+    content: "";
+    width: 100%;
+    height: 1px;
+    margin-top: 1.5rem;
+    background: var(--primary);
+    opacity: 1;
+    display: block;
+    position: relative;
+  }
+  #services-1628 .cs-chevron {
+    --chevronColor: var(--primary);
+    width: 3rem;
+    height: auto;
+  }
+  #services-1628 .cs-card-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* 16px - 20px */
+    column-gap: clamp(1rem, 2.5vw, 1.25rem);
+    /* 28px - 40px */
+    row-gap: clamp(1.75rem, 2.5vw, 2.5rem);
+  }
+  #services-1628 .cs-item {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    grid-column: span 12;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #services-1628 .cs-item:hover .cs-picture img {
+    opacity: .5;
+    transform: scale(1.2);
+  }
+  #services-1628 .cs-link {
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #services-1628 .cs-picture {
+    width: 100%;
+    height: 15rem;
+    margin-bottom: 1.5rem;
+    background-color: #000;
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+  #services-1628 .cs-picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform .6s, opacity .3s;
+  }
+  #services-1628 .cs-h3 {
+    font-size: 1.25rem;
+    line-height: 1.2em;
+    font-weight: 700;
+    text-align: left;
+    margin: 0 0 0.75rem 0;
+    color: var(--headerColor);
+  }
+  #services-1628 .cs-item-text {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-align: left;
+    margin: 0 0 1.5rem 0;
+    color: var(--bodyTextColor);
+  }
+  #services-1628 .cs-fake-link {
+    font-size: 1rem;
+    line-height: 1.2em;
+    font-weight: 700;
+    margin: 0;
+    margin-top: auto;
+    color: var(--primary);
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #services-1628 .cs-fake-link:hover .cs-icon {
+    transform: translateX(0.5rem);
+  }
+  #services-1628 .cs-icon {
+    width: 1.25rem;
+    height: auto;
+    display: block;
+    transition: transform .3s;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #services-1628 .cs-container {
+    max-width: 80rem;
+  }
+  #services-1628 .cs-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #services-1628 .cs-flex {
+    text-align: left;
+    width: 40vw;
+    max-width: 40rem;
+    flex: none;
+  }
+  #services-1628 .cs-title {
+    margin: 0;
+  }
+  #services-1628 .cs-text {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+  }
+  #services-1628 .cs-text:after {
+    width: 1px;
+    height: 100%;
+    margin: 0 1.5rem 0 0;
+    order: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #services-1628 .cs-item {
+    grid-column: span 6;
+  }
+  #services-1628 .cs-picture {
+    /* 240px - 420px */
+    height: clamp(15rem, 33vw, 26.25rem);
+  }
+}
+/* Large Desktop - 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #services-1628 .cs-item {
+    grid-column: span 3;
+  }
+}
+                                
+/*-- -------------------------- -->
+<---         Services           -->
+<--- -------------------------- -*/
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #services-1377 {
+        padding: var(--sectionPadding);
+        background-color: #f7f7f7;
+    }
+    #services-1377 .cs-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 48px - 64px */
+        gap: clamp(3rem, 6vw, 4rem);
+    }
+    #services-1377 .cs-content {
+        /* set text align to left if content needs to be left aligned */
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* centers content horizontally, set to flex-start to left align */
+        align-items: center;
+    }
+
+    #services-1377 .cs-topper {
+        color: var(--secondary);
+    }
+    #services-1377 .cs-card-group {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        /* 16px - 20px */
+        gap: clamp(1rem, 2.3vw, 1.25rem);
+    }
+    #services-1377 .cs-item {
+        list-style: none;
+        width: 100%;
+        /* 210px - 305px */
+        min-height: clamp(13.125rem, 30vw, 19.0625rem);
+        margin: 0;
+        /* prevents padding and border from affecting height and width */
+        box-sizing: border-box;
+        /* 16px - 24px */
+        padding: clamp(1rem, 1.8vw, 1.5rem);
+        /* 24px - 32px */
+        padding-top: clamp(1.5rem, 2.3vw, 2rem);
+        background-color: #fff;
+        border-radius: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        grid-column: span 12;
+        gap: 3rem;
+        position: relative;
+        z-index: 1;
+        transition: background-color 0.3s;
+    }
+    #services-1377 .cs-item:hover {
+        background-color: var(--primary);
+    }
+    #services-1377 .cs-item:hover .cs-icon,
+    #services-1377 .cs-item:hover .cs-arrow {
+        filter: grayscale(1) brightness(1000%);
+    }
+    #services-1377 .cs-item:hover .cs-h3 {
+        color: #fff;
+    }
+    #services-1377 .cs-item:hover .cs-arrow-wrapper {
+        border-color: #fff;
+    }
+    #services-1377 .cs-icon {
+        width: auto;
+        height: 2.5rem;
+        transition: filter 0.3s;
+    }
+    #services-1377 .cs-link {
+        text-decoration: none;
+        color: var(--headerColor);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 0.625rem;
+    }
+    #services-1377 .cs-h3 {
+        /* 20px - 25px */
+        font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+        font-weight: bold;
+        line-height: 1.2em;
+        text-align: inherit;
+        /* if a word is too long for the card, break it onto a new line */
+        word-break: break-word;
+        margin: 0;
+        transition: color 0.3s;
+    }
+    #services-1377 .cs-arrow-wrapper {
+        width: 3rem;
+        height: 3rem;
+        border: 1px solid #bababa;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* prevents the parent flexbox from shrinking the arrow */
+        flex-shrink: 0;
+        transition: border-color 0.3s;
+    }
+    #services-1377 .cs-arrow {
+        width: auto;
+        height: 0.75rem;
+        transition: filter 0.3s;
+    }
+}
+/* In between - 500px */
+@media only screen and (min-width: 31.25rem) {
+    #services-1377 .cs-item {
+        grid-column: span 6;
+    }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #services-1377 .cs-item {
+        text-align: left;
+        align-items: flex-start;
+        grid-column: span 3;
+    }
+}
+/* Large Desktop - 1300px */
+@media only screen and (min-width: 81.25rem) {
+    #services-1377 .cs-link {
+        flex-direction: row;
+    }
+}
+
+ 
+/*-- -------------------------- -->
+<---            FAQ             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #faq-709 {
+        position: relative;
+        overflow: hidden;
+    }
+    #faq-709 .cs-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* 40px - 48px */
+        gap: clamp(2.5rem, 5vw, 3rem);
+    }
+    #faq-709 .cs-content {
+        text-align: left;
+        max-width: 33.8125rem;
+        /* move section padding to the cs-content so we can make the cs-picture full width */
+        padding: var(--sectionPadding);
+        padding-top: 0;
+        /* prevents padding and border from affecting height and width */
+        box-sizing: border-box;
+    }
+
+    #faq-709 .cs-title {
+        /* 20 characters wide including spaces */
+        max-width: 20ch;
+        margin: 0 0 1.5rem 0;
+    }
+    #faq-709 .cs-faq-group {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #faq-709 .cs-faq-item {
+        list-style: none;
+        width: 100%;
+        border-bottom: 1px solid #e8e8e8;
+        transition: border-bottom 0.3s;
+    }
+    #faq-709 .cs-faq-item.active {
+        border-color: var(--primaryLight);
+    }
+    #faq-709 .cs-faq-item.active .cs-button {
+        color: var(--primary);
+    }
+    #faq-709 .cs-faq-item.active .cs-button:before {
+        background-color: var(--primaryLight);
+        transform: rotate(315deg);
+    }
+    #faq-709 .cs-faq-item.active .cs-button:after {
+        background-color: var(--primaryLight);
+        transform: rotate(-315deg);
+    }
+    #faq-709 .cs-faq-item.active .cs-item-p {
+        height: auto;
+        /* 20px - 24px bottom */
+        padding: 0 0 clamp(1rem, 2vw, 1.5rem) 0;
+        opacity: 1;
+    }
+    #faq-709 .cs-button {
+        /* 16px - 20px */
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        line-height: 1.2em;
+        text-align: left;
+        font-weight: bold;
+        /* 16px - 24px */
+        padding: clamp(1rem, 2.3vw, 1.5rem) 0;
+        border: none;
+        background: transparent;
+        color: var(--headerColor);
+        display: block;
+        width: 100%;
+        position: relative;
+        transition:
+            background-color 0.3s,
+            color 0.3s;
+    }
+    #faq-709 .cs-button:hover {
+        cursor: pointer;
+    }
+    #faq-709 .cs-button:before {
+        /* left line */
+        content: "";
+        width: 0.5rem;
+        height: 0.125rem;
+        background-color: var(--headerColor);
+        opacity: 1;
+        border-radius: 50%;
+        position: absolute;
+        display: block;
+        top: 45%;
+        right: 0.25rem;
+        transform: rotate(45deg);
+        /* animate the transform from the left side of the x axis, and the center of the y */
+        transform-origin: left center;
+        transition: transform 0.5s;
+    }
+    #faq-709 .cs-button:after {
+        /* right line */
+        content: "";
+        width: 0.5rem;
+        height: 0.125rem;
+        background-color: var(--headerColor);
+        opacity: 1;
+        border-radius: 50%;
+        position: absolute;
+        display: block;
+        top: 45%;
+        right: 0.0625rem;
+        transform: rotate(-45deg);
+        /* animate the transform from the right side of the x axis, and the center of the y */
+        transform-origin: right center;
+        transition: transform 0.5s;
+    }
+    #faq-709 .cs-button-text {
+        width: 90%;
+        display: block;
+    }
+    #faq-709 .cs-item-p {
+        /* 14px - 16px */
+        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        line-height: 1.5em;
+        width: 90%;
+        max-width: 33.8125rem;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        color: var(--bodyTextColor);
+        /* clips the text so it doesn't show up */
+        overflow: hidden;
+        transition:
+            opacity 0.3s,
+            padding-bottom 0.3s;
+    }
+    #faq-709 .cs-graphic {
+        width: 22.5625rem;
+        height: auto;
+        opacity: 0.5;
+        display: none;
+        position: absolute;
+        left: -11.25rem;
+        bottom: 1.875rem;
+        /* flips it horizontally */
+        transform: scaleX(-1);
+    }
+    #faq-709 .cs-picture {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 16rem;
+        z-index: 1;
+    }
+    #faq-709 .cs-picture img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #faq-709 {
+        /* moved seciton padding back to the section */
+        padding: var(--sectionPadding);
+    }
+    #faq-709 .cs-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    #faq-709 .cs-picture {
+        width: 50%;
+        max-width: 40.625rem;
+        /* 500px - 750px */
+        height: clamp(31.25rem, 68vw, 46.875rem);
+        /* sends it to the right in the 2nd position */
+        order: 2;
+    }
+    #faq-709 .cs-content {
+        width: 55%;
+        padding: 0;
+    }
+}
+/* Desktop - 1600px */
+@media only screen and (min-width: 100rem) {
+    #faq-709 .cs-graphic {
+        display: block;
+    }
+}
+                                
+
+/*-- -------------------------- -->
+<---          Footer            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #cs-footer-308 {
+        padding: var(--sectionPadding);
+        background-color: #1a1a1a;
+        /* Navigation Links */
+    }
+    #cs-footer-308 .cs-container {
+        width: 100%;
+        /* reset on desktop */
+        max-width: 43.75rem;
+        margin: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+    }
+    #cs-footer-308 .cs-logo-group {
+        /* takes up all the space, lets the other ul's wrap below it */
+        width: 100%;
+        position: relative;
+    }
+    #cs-footer-308 .cs-logo {
+        width: 11.125rem;
+        height: auto;
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+    #cs-footer-308 .cs-logo-img {
+        width: 100%;
+        height: auto;
+    }
+    #cs-footer-308 .cs-logo-img.dark {
+        display: none;
+    }
+    #cs-footer-308 .cs-text {
+        /* 14px - 16px */
+        font-size: clamp(0.875rem, 2.5vw, 1rem);
+        line-height: 1.5em;
+        margin: 0;
+        width: 78%;
+        /* changes to 305px at desktop */
+        max-width: 26.25rem;
+        color: var(--bodyTextColorWhite);
+    }
+    #cs-footer-308 .cs-nav {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    #cs-footer-308 .cs-nav-li {
+        list-style: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    #cs-footer-308 .cs-header {
+        font-size: 1rem;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--bodyTextColorWhite);
+        position: relative;
+        display: block;
+    }
+    #cs-footer-308 .cs-nav-link {
+        font-size: 1rem;
+        text-decoration: none;
+        line-height: 1.5em;
+        color: var(--bodyTextColorWhite);
+        position: relative;
+        display: inline-block;
+        transition: color 0.3s;
+    }
+    #cs-footer-308 .cs-nav-link:before {
+        /* underline */
+        content: "";
+        width: 0%;
+        height: 0.125rem;
+        background: currentColor;
+        opacity: 1;
+        position: absolute;
+        display: block;
+        bottom: -0.125rem;
+        left: 0;
+        transition: width 0.3s;
+    }
+    #cs-footer-308 .cs-nav-link:hover {
+        color: var(--primary);
+    }
+    #cs-footer-308 .cs-nav-link:hover:before {
+        width: 100%;
+    }
+    #cs-footer-308 .cs-icon {
+        width: 1.5rem;
+        height: auto;
+        margin-right: 0.75rem;
+    }
+    #cs-footer-308 .cs-bottom {
+        max-width: 80rem;
+        margin: auto;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #484848;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #cs-footer-308 .cs-copyright,
+    #cs-footer-308 .cs-copyright-link {
+        font-size: 1rem;
+        line-height: 1.5em;
+        color: var(--bodyTextColorWhite);
+    }
+    #cs-footer-308 .cs-copyright-link {
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    #cs-footer-308 .cs-copyright-link:hover {
+        color: var(--primary);
+    }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #cs-footer-308 .cs-container {
+        row-gap: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        row-gap: 2.5rem;
+    }
+    #cs-footer-308 .cs-nav {
+        width: auto;
+    }
+}
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #cs-footer-308 .cs-container {
+        max-width: 80rem;
+        flex-wrap: nowrap;
+        /* align everything to the right */
+        justify-content: flex-end;
+        column-gap: 5.25rem;
+    }
+    #cs-footer-308 .cs-logo-group {
+        width: 30%;
+        max-width: 24.1875rem;
+        /* pushes away from everything to the right */
+        margin-right: auto;
+    }
+    #cs-footer-308 .cs-text {
+        width: 100%;
+    }
+}
+
+                                
+
+
+/*-- -------------------------- */
+/*---        How We Work       */
+/*--- -------------------------- */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #why-choose-289 {
+    padding: var(--sectionPadding);
+    background-color: #ffffff;
+  }
+  #why-choose-289 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    padding: 0 1.5rem;
+  }
+  #why-choose-289 .cs-content {
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  #why-choose-289 .cs-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #why-choose-289 .cs-card-group {
+    list-style: none;
+    margin: 2rem 0 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+  #why-choose-289 .cs-item {
+    grid-column: span 12;
+    background-color: #f7f7f7;
+    border: 1px solid #e8e8e8;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  #why-choose-289 .cs-icon {
+    width: 2.75rem;
+    height: auto;
+  }
+  #why-choose-289 .cs-h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2em;
+    color: var(--headerColor);
+  }
+  #why-choose-289 .cs-item-text {
+    margin: 0;
+    color: var(--bodyTextColor);
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #why-choose-289 .cs-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  #why-choose-289 .cs-flex {
+    width: 45%;
+  }
+  #why-choose-289 .cs-text {
+    width: 55%;
+    margin: 0;
+  }
+  #why-choose-289 .cs-item {
+    grid-column: span 4;
+  }
+}
+
+
+
+/*-- -------------------------- */
+/*---        How We Work       */
+/*--- -------------------------- */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #why-choose-289 {
+    padding: var(--sectionPadding);
+    background-color: #fff;
+  }
+  #why-choose-289 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
+  #why-choose-289 .cs-content {
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  #why-choose-289 .cs-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #why-choose-289 .cs-card-group {
+    width: 100%;
+    margin: 2rem 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+  #why-choose-289 .cs-item {
+    grid-column: span 12;
+    background-color: #f7f7f7;
+    border: 1px solid #e8e8e8;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  #why-choose-289 .cs-icon {
+    width: 2.75rem;
+    height: auto;
+  }
+  #why-choose-289 .cs-h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2em;
+    color: var(--headerColor);
+  }
+  #why-choose-289 .cs-item-text {
+    margin: 0;
+    color: var(--bodyTextColor);
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #why-choose-289 .cs-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  #why-choose-289 .cs-flex {
+    width: 45%;
+  }
+  #why-choose-289 .cs-text {
+    width: 55%;
+    margin: 0;
+  }
+  #why-choose-289 .cs-item {
+    grid-column: span 4;
+  }
+}
+
+/* Process section fix (How we work) */
+#why-choose-289{padding:var(--sectionPadding);background:#fff}
+#why-choose-289 .cs-container{max-width:80rem;margin:0 auto;padding:0 1.5rem}
+#why-choose-289 .cs-content{max-width:60rem}
+#why-choose-289 .cs-card-group{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:1rem}
+#why-choose-289 .cs-item{background:#f7f7f7;border:1px solid #e8e8e8;border-radius:1rem;padding:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+#why-choose-289 .cs-icon{width:2.75rem;height:auto}
+@media(min-width:48rem){#why-choose-289 .cs-content{max-width:none;display:flex;gap:2rem;align-items:flex-end}#why-choose-289 .cs-flex{flex:0 0 45%}#why-choose-289 .cs-text{flex:1;margin:0}#why-choose-289 .cs-card-group{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+/* =========================================================
+   
+DYEVERSE Custom Sections (student customisation)
+   ========================================================= */
+
+/* Logo text (because we changed the logo from an image to text) */
+#cs-navigation .cs-logo-text {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--headerColor);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Simple utility container */
+.rh-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.rh-section {
+  padding: var(--sectionPadding);
+}
+
+.rh-section.rh-alt {
+  background: #f7f7f7;
+}
+
+.rh-topper {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.rh-title {
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--headerColor);
+}
+
+.rh-text {
+  margin: 0;
+  max-width: 60ch;
+}
+
+.rh-stats {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.rh-stats li {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid #e8e8e8;
+}
+
+.rh-stats strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--headerColor);
+}
+
+.rh-stats span {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.rh-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+.rh-card {
+  grid-column: span 12;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.rh-card img {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+}
+
+.rh-card h3 {
+  margin: 1rem 1rem 0.25rem 1rem;
+  color: var(--headerColor);
+}
+
+.rh-card p {
+  margin: 0 1rem 1rem 1rem;
+}
+
+.rh-quote {
+  grid-column: span 12;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}
+
+.rh-quote p {
+  margin: 0 0 0.75rem 0;
+}
+
+.rh-quote footer {
+  font-weight: 700;
+  color: var(--headerColor);
+}
+
+/* CTA strip */
+#rh-cta {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+#rh-cta .rh-title,
+#rh-cta .rh-topper {
+  color: #ffffff;
+}
+
+#rh-cta .rh-text {
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+.rh-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.rh-cta-row a {
+  background: #ffffff;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.9rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+/* Contact form */
+#contact-dyeverse .rh-form {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+#contact-dyeverse .rh-field {
+  grid-column: span 12;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#contact-dyeverse label {
+  font-weight: 700;
+  color: var(--headerColor);
+}
+
+#contact-dyeverse input,
+#contact-dyeverse textarea {
+  font: inherit;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e8e8e8;
+  border-radius: 0.75rem;
+}
+
+#contact-dyeverse textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+#contact-dyeverse .rh-actions {
+  grid-column: span 12;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#contact-dyeverse button {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.9rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 800;
+}
+
+#contact-dyeverse button:hover {
+  cursor: pointer;
+  filter: brightness(0.95);
+}
+
+#rh-form-status {
+  font-weight: 700;
+}
+
+.rh-status-ok { color: #1C7C54; }
+.rh-status-bad { color: #B21E2B; }
+
+/* Back to top */
+.rh-back-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid #e8e8e8;
+  background: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--headerColor);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 9999;
+}
+
+.rh-back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive grid tweaks */
+@media only screen and (min-width: 48rem) {
+  .rh-card { grid-column: span 4; }
+  .rh-quote { grid-column: span 6; }
+  #contact-dyeverse .rh-field.half { grid-column: span 6; }
+  .rh-cta-row { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+
+/* =========================================================
+   DYEVERSE custom improvements (student edits)
+   ========================================================= */
+
+.cs-announcement {
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.cs-announcement .cs-container {
+  width: min(90%, 80rem);
+  margin: 0 auto;
+  padding: 0.65rem 0;
+  text-align: center;
+}
+
+/* Hero background texture */
+#hero-1946 {
+  position: relative;
+  overflow: hidden;
+}
+#hero-1946::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("images/hero-gold.webp");
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.9) contrast(0.9);
+  opacity: 0.25;
+  pointer-events: none;
+}
+#hero-1946 .cs-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category section */
+#categories-dyeverse {
+  padding: var(--sectionPadding);
+}
+#categories-dyeverse .cs-title {
+  margin-bottom: 0.75rem;
+}
+#categories-dyeverse .cs-content {
+  margin-bottom: 2rem;
+}
+
+.cs-category-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.25rem;
+}
+@media (min-width: 48rem) {
+  .cs-category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cs-category-card {
+  display: block;
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.cs-category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.12);
+}
+.cs-category-image {
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  display: block;
+}
+.cs-category-body {
+  padding: 1rem 1rem 1.1rem;
+}
+.cs-category-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: var(--headerColor);
+}
+.cs-category-text {
+  margin: 0;
+  color: var(--bodyTextColor);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Scent finder */
+#scent-finder {
+  padding: var(--sectionPadding);
+  background: #fbfbfb;
+}
+.cs-scent-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+.cs-scent-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+@media (min-width: 48rem) {
+  .cs-scent-form {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+}
+.cs-scent-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--headerColor);
+}
+.cs-scent-form select {
+  border: 1px solid #dcdcdc;
+  border-radius: 0.75rem;
+  padding: 0.85rem 0.9rem;
+  font-size: 1rem;
+}
+.cs-scent-result {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.85rem;
+  background: rgba(168, 124, 58, 0.12);
+  color: var(--headerColor);
+  min-height: 2.5rem;
+}
+
+/* Best sellers */
+#bestsellers-dyeverse {
+  padding: var(--sectionPadding);
+}
+.cs-product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+@media (min-width: 48rem) {
+  .cs-product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.cs-product-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+.cs-product-img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+.cs-product-body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.6rem;
+  flex: 1;
+}
+.cs-product-title {
+  font-weight: 800;
+  color: var(--headerColor);
+}
+.cs-product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: var(--bodyTextColor);
+}
+.cs-product-meta strong {
+  color: var(--headerColor);
+}
+
+/* Contact section tweaks */
+#contact-dyeverse {
+  padding: var(--sectionPadding);
+  background: #fbfbfb;
+}
+#contact-dyeverse .cs-form-note {
+  font-size: 0.9rem;
+  color: var(--bodyTextColor);
+  margin: 0.75rem 0 0;
+}
+
+/* Small logo text */
+.cs-logo-text {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* ==============================================
+   OUR PROCESS (services-1728)
+   ============================================== */
+#services-1728 {
+  padding: var(--sectionPadding);
+  background: #ffffff;
+}
+#services-1728 .cs-container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+#services-1728 .cs-content {
+  max-width: 46rem;
+}
+#services-1728 .cs-card-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+#services-1728 .cs-item {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: #fafafa;
+}
+#services-1728 .cs-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+#services-1728 .cs-h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.2;
+}
+#services-1728 .cs-item-text {
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+@media only screen and (min-width: 48rem) {
+  #services-1728 .cs-card-group {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  #services-1728 .cs-item {
+    padding: 1.5rem;
+  }
+}
+
+/* ==============================================
+   TESTIMONIALS (testimonials-dyeverse)
+   ============================================== */
+#testimonials-dyeverse {
+  padding: var(--sectionPadding);
+  background: #f7f7f7;
+}
+#testimonials-dyeverse .cs-container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+#testimonials-dyeverse .cs-card-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+#testimonials-dyeverse .cs-item {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+#testimonials-dyeverse .cs-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+#testimonials-dyeverse .cs-picture {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  overflow: hidden;
+  flex: none;
+}
+#testimonials-dyeverse .cs-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#testimonials-dyeverse .cs-name {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+#testimonials-dyeverse .cs-role {
+  margin: 0.15rem 0 0;
+  font-size: 0.875rem;
+  color: #555;
+}
+#testimonials-dyeverse .cs-text {
+  margin: 0;
+}
+#testimonials-dyeverse .cs-stars {
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+}
+@media only screen and (min-width: 48rem) {
+  #testimonials-dyeverse .cs-card-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==============================================
+   CTA (cta-dyeverse)
+   ============================================== */
+#cta-dyeverse {
+  padding: var(--sectionPadding);
+  position: relative;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+#cta-dyeverse:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('images/hero-gold.webp') center / cover no-repeat;
+  opacity: 0.18;
+  filter: saturate(1.2);
+  pointer-events: none;
+}
+#cta-dyeverse .cs-container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: auto;
+  position: relative;
+}
+#cta-dyeverse .cs-content {
+  max-width: 52rem;
+  text-align: left;
+}
+#cta-dyeverse .cs-title,
+#cta-dyeverse .cs-text {
+  color: #fff;
+}
+#cta-dyeverse .cs-text {
+  opacity: 0.9;
+}
+
+/* ==============================================
+   FAQ (faq-326)
+   ============================================== */
+#faq-326 {
+  padding: var(--sectionPadding);
+  background: #ffffff;
+}
+#faq-326 .cs-container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+#faq-326 .cs-content {
+  max-width: 46rem;
+}
+#faq-326 .cs-wrapper {
+  width: 100%;
+}
+#faq-326 .cs-faq-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+#faq-326 .cs-faq-item {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+#faq-326 .cs-button {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--headerColor);
+}
+#faq-326 .cs-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+#faq-326 .cs-item-p {
+  margin: 0 0 1rem;
+  color: var(--bodyTextColor);
+  display: none;
+  max-width: 52rem;
+}
+#faq-326 .cs-faq-item.active .cs-item-p {
+  display: block;
+}
+#faq-326 .cs-indicator {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+#faq-326 .cs-indicator:before {
+  content: '+';
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+#faq-326 .cs-faq-item.active .cs-indicator:before {
+  content: '−';
+}
+@media only screen and (min-width: 64rem) {
+  #faq-326 .cs-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ============================================================
+   Hero layout improvement (desktop): text + image side-by-side,
+   product category cards sit underneath.
+   ============================================================ */
+@media only screen and (min-width: 64rem) {
+  #hero-1946 .cs-container {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    grid-template-areas:
+      "content image"
+      "cards cards";
+    align-items: center;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    row-gap: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  #hero-1946 .cs-content {
+    grid-area: content;
+  }
+  #hero-1946 .cs-image-group {
+    grid-area: image;
+    width: 100%;
+  }
+  #hero-1946 .cs-picture {
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+  }
+  #hero-1946 .cs-card-group {
+    grid-area: cards;
+    justify-content: space-between;
+  }
+}
+
+/* ==========================
+   DYEVERSE CUSTOM FIXES
+   (alignment + missing section styles)
+   ========================== */
+
+#hero-1946 .cs-cards {
+  width: 100%;
+  margin-top: clamp(1.5rem, 2vw, 2.5rem);
+}
+
+@media only screen and (min-width: 64rem) {
+  /* Override the base hero absolute picture positioning so the grid layout behaves */
+  #hero-1946 .cs-picture {
+    position: relative;
+    top: auto;
+    right: auto;
+    height: 100%;
+  }
+
+  #hero-1946 .cs-cards {
+    grid-column: 1 / -1;
+  }
+}
+
+/* About section (was unstyled, caused huge blank space + misalignment) */
+#about-dyeverse {
+  background: #fff;
+}
+
+#about-dyeverse .cs-about-grid {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 3rem);
+  align-items: center;
+}
+
+#about-dyeverse .cs-about-text {
+  max-width: 42rem;
+}
+
+#about-dyeverse .cs-about-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+#about-dyeverse .cs-about-list li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  color: #1a1a1a;
+}
+
+#about-dyeverse .cs-about-list li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: rgba(190, 24, 93, 0.12);
+  color: #be185d;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 0.15rem;
+}
+
+#about-dyeverse .cs-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-style: italic;
+  padding-bottom: 0.15rem;
+}
+#about-dyeverse .cs-about-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  opacity: 0.9;
+}
+#about-dyeverse .cs-about-link:hover::after,
+#about-dyeverse .cs-about-link:focus-visible::after {
+  transform: scaleX(1);
+}
+#about-dyeverse .cs-about-link .cs-arrow {
+  font-size: 1.25em;
+  line-height: 1;
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+#about-dyeverse .cs-about-link:hover .cs-arrow,
+#about-dyeverse .cs-about-link:focus-visible .cs-arrow {
+  transform: translateX(3px);
+}
+
+#about-dyeverse .cs-about-image {
+  width: 100%;
+}
+
+#about-dyeverse .cs-about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+}
+
+@media only screen and (min-width: 64rem) {
+  #about-dyeverse .cs-about-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+
+/* =============================
+   Requested alignment + typography tweaks (Jan 2026)
+   ============================= */
+
+/* Make overall headings feel stronger (bold + italic) without reflowing layout */
+.cs-title,
+#hero-2295 h1,
+#hero-2295 .cs-title {
+  font-weight: 800;
+  font-style: italic;
+}
+
+#cs-navigation .cs-logo,
+#cs-navigation .cs-logo:visited {
+  text-decoration: none;
+}
+#cs-navigation .cs-logo-text {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  font-style: italic;
+}
+
+/* Social icons: make SVG inherit color + consistent sizing */
+#cs-navigation .cs-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* default neutral circle, colored icons */
+  background-color: #f7f7f7;
+  color: var(--headerColor);
+}
+#cs-navigation .cs-social-link svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Social brand colors (icon color in light mode) */
+#cs-navigation .cs-social-link.cs-instagram { --brand: #E1306C; color: var(--brand); }
+#cs-navigation .cs-social-link.cs-facebook  { --brand: #1877F2; color: var(--brand); }
+#cs-navigation .cs-social-link.cs-tiktok    { --brand: #111111; color: var(--brand); }
+#cs-navigation .cs-social-link.cs-email     { --brand: #D93025; color: var(--brand); }
+
+/* On hover: fill the circle with the platform color, icon goes white */
+#cs-navigation .cs-social-link:hover {
+  background-color: var(--brand, var(--primary));
+  color: #ffffff;
+}
+
+/* Dark mode: give the circle a darker base so the colored icons still pop */
+body.dark #cs-navigation .cs-social-link {
+  background-color: rgba(255,255,255,0.10);
+}
+
+/* 1) Contact spacing between components */
+#contact-dyeverse .cs-form {
+  gap: 1.25rem;
+}
+#contact-dyeverse .cs-form-group {
+  gap: 0.65rem;
+}
+#contact-dyeverse .cs-input {
+  padding: 1rem;
+}
+#contact-dyeverse .cs-textarea {
+  min-height: 9rem;
+}
+#contact-dyeverse .cs-actions {
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* 2) FAQ: center the whole section content (reduce "empty left" feeling) */
+@media only screen and (min-width: 48rem) {
+  #faq-709 .cs-container {
+    justify-content: center;
+    gap: 3rem;
+  }
+  #faq-709 .cs-content {
+    width: min(42rem, 100%);
+  }
+  #faq-709 .cs-picture {
+    width: min(28rem, 45%);
+  }
+}
+
+/* 3) About section: push slightly to the right + remove link underline */
+#about-dyeverse .cs-about-grid {
+  padding-left: clamp(0.5rem, 2vw, 1.5rem);
+}
+#about-dyeverse .cs-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-style: italic;
+  padding-bottom: 0.15rem;
+}
+#about-dyeverse .cs-about-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  opacity: 0.9;
+}
+#about-dyeverse .cs-about-link:hover::after,
+#about-dyeverse .cs-about-link:focus-visible::after {
+  transform: scaleX(1);
+}
+#about-dyeverse .cs-about-link .cs-arrow {
+  font-size: 1.25em;
+  line-height: 1;
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+#about-dyeverse .cs-about-link:hover .cs-arrow,
+#about-dyeverse .cs-about-link:focus-visible .cs-arrow {
+  transform: translateX(3px);
+}
+
+/* Footer: remove any accidental link underlines on logo */
+#cs-footer-108 .cs-logo,
+#cs-footer-108 .cs-logo:visited {
+  text-decoration: none;
+}
+
+/* =========================================================
+   Requested tweaks: spacing + alignment + typography
+   (kept as overrides at the end to avoid layout surprises)
+   ========================================================= */
+
+#cs-navigation .cs-logo,
+#cs-navigation .cs-logo:visited {
+  text-decoration: none;
+}
+#cs-navigation .cs-logo-text {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: clamp(1.55rem, 2.2vw, 2.05rem);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+
+/* Global typography: make key headings slightly bolder + italic */
+.cs-title {
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* ABOUT section: push the block slightly to the right + remove underline from link */
+#about-dyeverse .cs-about-grid {
+  margin-left: clamp(0px, 3vw, 28px);
+}
+#about-dyeverse .cs-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-style: italic;
+  padding-bottom: 0.15rem;
+}
+#about-dyeverse .cs-about-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  opacity: 0.9;
+}
+#about-dyeverse .cs-about-link:hover::after,
+#about-dyeverse .cs-about-link:focus-visible::after {
+  transform: scaleX(1);
+}
+#about-dyeverse .cs-about-link .cs-arrow {
+  font-size: 1.25em;
+  line-height: 1;
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+#about-dyeverse .cs-about-link:hover .cs-arrow,
+#about-dyeverse .cs-about-link:focus-visible .cs-arrow {
+  transform: translateX(3px);
+}
+
+/* FAQ: center the whole section on wide screens (reduces empty left space) */
+@media only screen and (min-width: 48rem) {
+  #faq-709 .cs-container {
+    justify-content: center;
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+  #faq-709 .cs-content {
+    width: min(42rem, 100%);
+  }
+  #faq-709 .cs-picture {
+    width: min(34rem, 45%);
+  }
+}
+
+/* Contact form: keep breathing room between components */
+#contact-dyeverse .rh-form {
+  gap: 1.25rem;
+}
+#contact-dyeverse .rh-row {
+  gap: 1.25rem;
+}
+#contact-dyeverse .rh-field {
+  gap: 0.75rem;
+}
+#contact-dyeverse .rh-actions {
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+#cs-footer-108 .cs-logo,
+#cs-footer-108 .cs-logo:visited {
+  text-decoration: none;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  font-weight: 800;
+  font-style: italic;
+}
+#cs-footer-108 .cs-logo * {
+  text-decoration: none;
+}
+
+/* ==========================================
+   CTA: "Want a custom bundle?" (centered)
+   ========================================== */
+
+#cta-262 {
+  padding: var(--sectionPadding);
+}
+
+#cta-262 .cs-container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#cta-262 .cs-left-section {
+  max-width: 55rem;
+}
+
+#cta-262 .cs-background {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: block;
+}
+
+#cta-262 .cs-background img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ================================
+   DYEVERSE LINK STYLE (no underline, with arrow)
+   Matches: "Pricing details ›" style
+   ================================ */
+#about-dyeverse .cs-about-link {
+  text-decoration: none;
+  padding-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+/* Disable the previous underline animation completely */
+#about-dyeverse .cs-about-link::after {
+  content: none !important;
+  display: none !important;
+}
+
+#about-dyeverse .cs-about-link .cs-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+  transform: translateY(1px);
+  transition: transform 200ms ease;
+}
+
+#about-dyeverse .cs-about-link:hover {
+  opacity: 0.92;
+}
+
+#about-dyeverse .cs-about-link:hover .cs-arrow {
+  transform: translate(4px, 1px);
+}
+
+/* ============================
+   DYEVERSE: polish pass
+   (targeted fixes only)
+   ============================ */
+
+/* HERO (gold background): widen copy so it doesn't stack word-by-word,
+   and style the secondary action links so the buttons align nicely. */
+#hero-1946 .cs-content {
+  max-width: 58rem;
+}
+
+#hero-1946 .cs-title {
+  max-width: 48rem;
+}
+
+#hero-1946 .cs-text {
+  max-width: 42rem;
+  line-height: 1.6;
+}
+
+#hero-1946 .cs-button-group {
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* Secondary hero links (Best Sellers / Bundles) */
+#hero-1946 .cs-button-transparent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* match the solid button height so the row looks aligned */
+  min-height: 2.875rem;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: var(--headerColor);
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+/* Ensure the primary button aligns with the secondary buttons */
+#hero-1946 .cs-button-solid {
+  min-height: 2.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero-1946 .cs-button-transparent::after {
+  content: "\203A"; /* › */
+  display: inline-block;
+  transform: translateY(-1px);
+  transition: transform 0.2s;
+}
+
+#hero-1946 .cs-button-transparent:hover {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+#hero-1946 .cs-button-transparent:hover::after {
+  transform: translate(3px, -1px);
+}
+
+#hero-1946 .cs-button-solid {
+  /* keep height consistent with the secondary actions */
+  min-height: 2.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 64rem) {
+  /* Keep the hero content visually balanced on wide screens */
+  #hero-1946 .cs-content {
+    max-width: 62rem;
+  }
+  #hero-1946 .cs-text {
+    max-width: 46rem;
+  }
+}
+
+/* FOOTER: make DYEVERSE bright red */
+#cs-footer-308 .cs-logo-text {
+  color: #ff1f3d;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   HERO (Stripe-inspired layout polish)
+   Clean left text column + right visual, and keep CTAs tidy.
+   ========================================================= */
+
+/* Mobile: keep everything centered and readable */
+#hero-1946 .cs-content {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* Small hero label above the headline */
+#hero-1946 .cs-topper {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--headerColor);
+  opacity: 0.85;
+}
+
+#hero-1946 .cs-title-brand {
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Right side visual wrapper (image + quick links panel) */
+#hero-1946 .cs-visual {
+  width: 100%;
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+#hero-1946 .cs-hero-panel {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+#hero-1946 .cs-hero-panel__kicker {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+#hero-1946 .cs-hero-panel__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.95rem;
+  text-decoration: none;
+  color: var(--headerColor);
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#hero-1946 .cs-hero-panel__link + .cs-hero-panel__link {
+  margin-top: 0.65rem;
+}
+
+#hero-1946 .cs-hero-panel__link::after {
+  content: "\203A";
+  font-size: 1.25rem;
+  opacity: 0.75;
+  transform: translateX(0);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#hero-1946 .cs-hero-panel__link:hover::after {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* Tablet+: start forming the 2-column hero earlier */
+@media only screen and (min-width: 48rem) {
+  #hero-1946 .cs-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-areas:
+      "content visual"
+      "cards cards";
+    align-items: center;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    row-gap: clamp(1.75rem, 3vw, 2.5rem);
+  }
+
+  #hero-1946 .cs-content {
+    grid-area: content;
+  }
+
+  #hero-1946 .cs-visual {
+    grid-area: visual;
+    justify-self: end;
+    margin: 0;
+  }
+
+  #hero-1946 .cs-cards {
+    grid-area: cards;
+    position: static;
+    left: auto;
+    bottom: auto;
+    margin-top: 0;
+  }
+}
+
+/* Desktop: grid layout like a modern SaaS hero */
+@media only screen and (min-width: 64rem) {
+  #hero-1946 .cs-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-areas:
+      "content visual"
+      "cards cards";
+    align-items: center;
+    column-gap: clamp(2.5rem, 4vw, 4rem);
+    row-gap: clamp(2rem, 3vw, 3rem);
+  }
+
+  /* Force the hero content to stack (fixes the cramped vertical paragraph) */
+  #hero-1946 .cs-content {
+    grid-area: content;
+    width: 100%;
+    max-width: 44rem;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #hero-1946 .cs-flex {
+    width: 100% !important;
+  }
+
+  #hero-1946 .cs-title {
+    max-width: 28ch;
+    letter-spacing: -0.02em;
+  }
+
+  #hero-1946 .cs-text {
+    max-width: 52ch;
+    margin-top: 1rem;
+  }
+
+  #hero-1946 .cs-button-group {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  /* Right side visual: avoid the super-tall image column */
+  #hero-1946 .cs-visual {
+    grid-area: visual;
+    justify-self: end;
+    margin: 0;
+  }
+
+  #hero-1946 .cs-image-group {
+    width: 100%;
+    height: clamp(22rem, 35vw, 32rem);
+    margin: 0;
+  }
+
+  #hero-1946 .cs-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Cards row sits below hero, centered, no absolute positioning */
+  #hero-1946 .cs-cards {
+    grid-area: cards;
+    position: static;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: var(--max-width);
+    margin-top: 0;
+  }
+}
+
+/* Ultra-wide screens: stop the template from flipping layouts */
+@media only screen and (min-width: 81.25rem) {
+  #hero-1946 .cs-container {
+    display: grid;
+  }
+  #hero-1946 .cs-content {
+    flex-direction: column !important;
+  }
+}
+
+/* ==============================
+   Contact section (split layout)
+   ============================== */
+
+#contact-dyeverse {
+  /* keep the section calm, but give it a subtle separation */
+  background: #faf9f8;
+}
+
+#contact-dyeverse .rh-contact-split {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 4vw, 4rem);
+  align-items: stretch;
+}
+
+#contact-dyeverse .cs-title-group {
+  text-align: left;
+  max-width: 32rem;
+}
+
+#contact-dyeverse .rh-contact-meta {
+  list-style: none;
+  margin: 2.25rem 0 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+#contact-dyeverse .rh-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--headerColor);
+}
+
+#contact-dyeverse .rh-meta-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: #f2f1ef;
+}
+
+#contact-dyeverse .rh-meta-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+}
+
+#contact-dyeverse .rh-meta-link {
+  color: var(--headerColor);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#contact-dyeverse .rh-meta-link:hover {
+  opacity: 0.85;
+}
+
+#contact-dyeverse .rh-contact-card {
+  background: #ffffff;
+  border: 1px solid #e8e6e2;
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+}
+
+#contact-dyeverse .cs-form {
+  width: 100%;
+  margin: 0;
+}
+
+#contact-dyeverse .cs-label {
+  font-weight: 600;
+}
+
+#contact-dyeverse .cs-input::placeholder {
+  color: #9b96a6;
+}
+
+#contact-dyeverse .cs-submit {
+  width: fit-content;
+  min-width: 9.5rem;
+  border-radius: 0.95rem;
+}
+
+@media only screen and (min-width: 48rem) {
+  #contact-dyeverse .rh-contact-split {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: start;
+  }
+}
+
+/* Brand name: darkish red (logo only, not global buttons) */
+#cs-navigation .cs-logo-text,
+#cs-footer-308 .cs-logo-text,
+#cs-footer .cs-logo-text {
+  color: #8b1a1a !important;
+}
+
+/* =========================================================
+   Dyeverse FAQ (Airbnb-style card grid)
+   ========================================================= */
+#faq-709.dv-faq {
+  padding: var(--sectionPadding, 4rem 1rem);
+}
+
+#faq-709 .dv-faq-head {
+  max-width: 52rem;
+  margin-bottom: 2.5rem;
+}
+
+#faq-709 .dv-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 64rem) {
+  #faq-709 .dv-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  #faq-709 .dv-faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#faq-709 .dv-faq-card {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+#faq-709 .dv-faq-media {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+#faq-709 .dv-faq-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+#faq-709 .dv-faq-body {
+  display: block;
+  padding-top: 0.75rem;
+}
+
+#faq-709 .dv-faq-kicker {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+#faq-709 .dv-faq-title {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#faq-709 .dv-faq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  font-weight: 650;
+}
+
+#faq-709 .dv-faq-card:hover .dv-faq-media img {
+  transform: scale(1.02);
+}
+
+#faq-709 .dv-faq-card:hover .dv-faq-title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Dialog styling */
+.dv-dialog {
+  border: 0;
+  padding: 0;
+  border-radius: 1.5rem;
+  width: min(40rem, calc(100% - 2rem));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+}
+
+.dv-dialog::backdrop {
+  background: rgba(8, 10, 14, 0.55);
+}
+
+.dv-dialog-inner {
+  position: relative;
+  padding: 1.75rem;
+  background: #ffffff;
+}
+
+.dv-dialog-inner h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.dv-dialog-inner p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.dv-dialog-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------
+   Global link cleanup + CTA link style (no underline)
+   ------------------------------------------------------------ */
+
+/* Remove default underlines everywhere */
+a {
+  text-decoration: none;
+}
+
+/* Consistent "Pricing details >" style */
+.cs-link,
+.cs-about-link,
+.rh-meta-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--primary);
+}
+
+.cs-link__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.cs-link__label::after {
+  content: "›";
+  font-size: 1.15em;
+  line-height: 1;
+  transform: translateY(0.02em);
+  opacity: 0.9;
+}
+
+.cs-link__desc {
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 36ch;
+}
+
+.cs-link:hover .cs-link__label,
+.cs-about-link:hover .cs-link__label,
+.rh-meta-link:hover .cs-link__label {
+  opacity: 0.9;
+}
+
+.cs-link:focus-visible,
+.cs-about-link:focus-visible,
+.rh-meta-link:focus-visible {
+  outline: 2px solid rgba(20, 23, 66, 0.25);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Remove the older underline animation for the About link */
+.cs-about-link {
+  background-image: none !important;
+  background-size: initial !important;
+  background-position: initial !important;
+  background-repeat: initial !important;
+}
+
+/* --- Contact layout: tighten spacing + clean form alignment --- */
+#contact-dyeverse .cs-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+#contact-dyeverse .rh-contact-meta {
+  max-width: 22rem;
+}
+
+/* Make the split feel intentional (no huge empty runway) */
+@media only screen and (min-width: 48rem) {
+  #contact-dyeverse .rh-contact-split {
+    grid-template-columns: minmax(260px, 340px) minmax(0, 44rem);
+    gap: 2.75rem;
+    justify-content: center;
+    align-items: start;
+  }
+
+  #contact-dyeverse .cs-form-wrap {
+    justify-self: center;
+    width: 100%;
+    max-width: 44rem;
+  }
+}
+
+/* Form row layout (labels above inputs, like the reference) */
+#contact-dyeverse .cs-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 47.99rem) {
+  #contact-dyeverse .cs-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+#contact-dyeverse .cs-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+#contact-dyeverse .cs-label--full {
+  grid-column: 1 / -1;
+}
+
+#contact-dyeverse .cs-button-solid {
+  align-self: flex-start;
+}
+
+/* ============================================================
+   Dark mode toggle (opt-in)
+   - Default theme stays exactly as-is.
+   - Only when .theme-dark is applied to <html> does styling change.
+   ============================================================ */
+
+.dv-theme-toggle {
+  position: fixed;
+  top: max(16px, calc(env(safe-area-inset-top) + 12px));
+  right: max(16px, calc(env(safe-area-inset-right) + 12px));
+  z-index: 10050;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 15, 20, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #12121a;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dv-theme-toggle:focus-visible {
+  outline: 3px solid rgba(178, 30, 43, 0.35);
+  outline-offset: 3px;
+}
+
+.dv-theme-toggle__icon {
+  font-size: 1rem;
+}
+
+html.theme-dark .dv-theme-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(18, 18, 24, 0.78);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Dark theme palette via existing variables */
+html.theme-dark {
+  --headerColor: rgba(255, 255, 255, 0.92);
+  --bodyTextColor: rgba(255, 255, 255, 0.78);
+  --primary: #B21E2B; /* keep Dyeverse red */
+  --primaryLight: #E2535F;
+  --secondary: #9AA7FF;
+  --secondaryLight: #B8C2FF;
+}
+
+html.theme-dark body {
+  background: #0B0B10;
+  color: var(--bodyTextColor);
+}
+
+/* Surfaces and borders */
+html.theme-dark #cs-navigation {
+  background: rgba(18, 18, 24, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.theme-dark #cs-navigation .cs-ul-wrapper {
+  background: rgba(18, 18, 24, 0.96);
+}
+
+html.theme-dark .cs-button-solid {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+html.theme-dark .cs-card-group .cs-item,
+html.theme-dark .cs-item {
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+html.theme-dark input,
+html.theme-dark textarea,
+html.theme-dark select {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html.theme-dark input::placeholder,
+html.theme-dark textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+html.theme-dark .cs-topper,
+html.theme-dark .cs-title {
+  color: var(--headerColor);
+}
+
+html.theme-dark a {
+  color: rgba(184, 194, 255, 0.95);
+}
+
+html.theme-dark footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Fix any hard-coded light-theme text colors inside custom sections */
+html.theme-dark #contact-dyeverse .rh-form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html.theme-dark #contact-dyeverse .rh-form-heading {
+  color: var(--headerColor);
+}
+
+html.theme-dark #contact-dyeverse .rh-label,
+html.theme-dark #contact-dyeverse .rh-form-note,
+html.theme-dark #contact-dyeverse .rh-help p {
+  color: var(--bodyTextColor);
+}
+
+html.theme-dark #contact-dyeverse .rh-input,
+html.theme-dark #contact-dyeverse .rh-textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: var(--bodyTextColor);
+}
+
+html.theme-dark #contact-dyeverse .rh-input::placeholder,
+html.theme-dark #contact-dyeverse .rh-textarea::placeholder {
+  color: rgba(243, 244, 246, 0.65);
+}
+
+html.theme-dark #contact-dyeverse .rh-input:focus,
+html.theme-dark #contact-dyeverse .rh-textarea:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+html.theme-dark .dv-dialog-inner {
+  background: #0f1117;
+  color: var(--bodyTextColor);
+}
+
+html.theme-dark .dv-dialog-inner h1,
+html.theme-dark .dv-dialog-inner h2,
+html.theme-dark .dv-dialog-inner h3 {
+  color: var(--headerColor);
+}
+
+/* ------------------------------------------------------------------
+   Dark mode: ensure light-surface sections remain readable
+   (no layout changes, contrast only)
+   ------------------------------------------------------------------ */
+
+/* Contact section: switch the section background and form card
+   to dark surfaces so the left-column text stays visible. */
+html.theme-dark #contact-dyeverse {
+  background: #0b0f14;
+}
+
+html.theme-dark #contact-dyeverse .cs-contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html.theme-dark #contact-dyeverse .cs-contact-wrapper,
+html.theme-dark #contact-dyeverse .cs-contact-info {
+  color: var(--bodyTextColor);
+}
+
+html.theme-dark #contact-dyeverse .cs-topper,
+html.theme-dark #contact-dyeverse .cs-title {
+  color: var(--headerColor);
+}
+
+html.theme-dark #contact-dyeverse .cs-text,
+html.theme-dark #contact-dyeverse .cs-contact-note {
+  color: rgba(233, 238, 245, 0.82);
+}
+
+html.theme-dark #contact-dyeverse .cs-contact-item a {
+  color: rgba(233, 238, 245, 0.92);
+}
+
+html.theme-dark #contact-dyeverse .cs-contact-item svg {
+  fill: rgba(233, 238, 245, 0.85);
+}
+
+/* Inputs inside contact card */
+html.theme-dark #contact-dyeverse .cs-contact-card input,
+html.theme-dark #contact-dyeverse .cs-contact-card textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(233, 238, 245, 0.92);
+}
+
+html.theme-dark #contact-dyeverse .cs-contact-card input::placeholder,
+html.theme-dark #contact-dyeverse .cs-contact-card textarea::placeholder {
+  color: rgba(233, 238, 245, 0.55);
+}
+
+/* Helpful: keep buttons readable on dark surfaces */
+html.theme-dark #contact-dyeverse .cs-button-solid {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ------------------------------------------------------------------
+   Dark mode: global readability sweep
+   Keeps text readable across sections that are light by default.
+   ------------------------------------------------------------------ */
+
+/* Section surfaces */
+html.theme-dark #about-dyeverse,
+html.theme-dark #categories-dyeverse,
+html.theme-dark #scent-finder,
+html.theme-dark #bestsellers-dyeverse,
+html.theme-dark #services-1728,
+html.theme-dark #testimonials-dyeverse,
+html.theme-dark #cta-262,
+html.theme-dark #cta-dyeverse {
+  background: #0B0B10;
+}
+
+/* Common typography */
+html.theme-dark .cs-title,
+html.theme-dark .cs-h2,
+html.theme-dark .cs-h3,
+html.theme-dark .cs-item-title,
+html.theme-dark .cs-card-title,
+html.theme-dark .cs-product-title,
+html.theme-dark .cs-topper {
+  color: #F1F5F9 !important;
+}
+
+html.theme-dark .cs-text,
+html.theme-dark .cs-item-text,
+html.theme-dark .cs-li,
+html.theme-dark .cs-category-desc,
+html.theme-dark .cs-product-desc,
+html.theme-dark .cs-label {
+  color: rgba(241, 245, 249, 0.78) !important;
+}
+
+/* Cards / surfaces that are white in light mode */
+html.theme-dark .cs-card,
+html.theme-dark .cs-category-card,
+html.theme-dark .cs-product-card,
+html.theme-dark .cs-scent-card,
+html.theme-dark .cs-service-card,
+html.theme-dark .cs-review,
+html.theme-dark .dv-faq-card {
+  background: #0F172A !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Inputs/selects in dark mode */
+html.theme-dark input,
+html.theme-dark textarea,
+html.theme-dark select {
+  background: #0B1220;
+  color: #F1F5F9;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+html.theme-dark input::placeholder,
+html.theme-dark textarea::placeholder {
+  color: rgba(241, 245, 249, 0.55);
+}
+
+/* Keep red accent links readable */
+html.theme-dark a {
+  color: #ff7a7a;
+}
+
+html.theme-dark a:hover,
+html.theme-dark a:focus {
+  color: #ff9b9b;
+}
+
+
+/* ===================
+   Webfont usage
+=================== */
+
+.cs-title,
+.cs-h1,
+.cs-h2,
+.cs-h3,
+.dv-display {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===================
+   Dark mode contrast fixes (keep text readable on cards/forms)
+=================== */
+
+html.theme-dark section[id] {
+  background-color: transparent;
+}
+
+html.theme-dark .cs-link__desc {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Contact card + inputs */
+html.theme-dark #contact-dyeverse .rh-contact-card {
+  background: var(--dv-surface);
+  border: 1px solid var(--dv-border);
+}
+
+html.theme-dark #contact-dyeverse .cs-label,
+html.theme-dark #contact-dyeverse label {
+  color: var(--dv-text);
+}
+
+html.theme-dark #contact-dyeverse .cs-input,
+html.theme-dark #contact-dyeverse input,
+html.theme-dark #contact-dyeverse textarea {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--dv-text);
+  border: 1px solid var(--dv-border);
+}
+
+html.theme-dark #contact-dyeverse .cs-input::placeholder,
+html.theme-dark #contact-dyeverse input::placeholder,
+html.theme-dark #contact-dyeverse textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+html.theme-dark #contact-dyeverse .rh-meta-icon {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--dv-border);
+}
+
+/* General "white surface" components */
+html.theme-dark .cs-card,
+html.theme-dark .cs-item,
+html.theme-dark .cs-box,
+html.theme-dark .cs-content,
+html.theme-dark .cs-ul-wrapper,
+html.theme-dark dialog.dv-dialog {
+  background: var(--dv-surface);
+  border-color: var(--dv-border);
+}
+
+html.theme-dark .cs-card *,
+html.theme-dark dialog.dv-dialog * {
+  color: var(--dv-text);
+}
+

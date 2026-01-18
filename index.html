@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="DYEVERSE. Hand-poured candles, room sprays, diffusers, and gift bundles." name="description"/>
+<title>DYEVERSE | Candles &amp; Home Fragrance</title>
+<link href="style.css" rel="stylesheet"/>
+<script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Dark mode toggle (does not alter layout unless enabled) -->
+  <button id="dv-theme-toggle" class="dv-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <span class="dv-theme-toggle__icon" aria-hidden="true">🌙</span>
+    <span class="dv-theme-toggle__text">Dark</span>
+  </button>
+<!-- ============================================ -->
+<!--                Announcement                  -->
+<!-- ============================================ -->
+<div class="cs-announcement" role="status">
+<div class="cs-container">
+<p class="cs-announcement-text">Free delivery over $75 • Small-batch pours • Clean-burning soy wax</p>
+</div>
+</div>
+<!-- ============================================ -->
+<!--                 Navigation                   -->
+<!-- ============================================ -->
+<header id="cs-navigation">
+<div class="cs-container">
+<a aria-label="Back to DYEVERSE home" class="cs-logo" href="#hero-1946">
+<span class="cs-logo-text">DYEVERSE</span>
+</a>
+<nav aria-label="Main navigation" class="cs-nav" role="navigation">
+<button aria-label="mobile menu toggle" class="cs-toggle" type="button" aria-expanded="false" aria-controls="cs-expanded">
+<div aria-hidden="true" class="cs-box">
+<span aria-hidden="true" class="cs-line cs-line1"></span>
+<span aria-hidden="true" class="cs-line cs-line2"></span>
+<span aria-hidden="true" class="cs-line cs-line3"></span>
+</div>
+</button>
+<div class="cs-ul-wrapper">
+<ul aria-expanded="false" class="cs-ul" id="cs-expanded">
+<li class="cs-li"><a class="cs-li-link" href="#hero-1946">Home</a></li>
+<li class="cs-li"><a class="cs-li-link" href="#about-dyeverse">About</a></li>
+<li class="cs-li cs-dropdown" tabindex="0">
+<span class="cs-li-link">
+                              Shop
+                              <img alt="" aria-hidden="true" class="cs-drop-icon" decoding="async" height="15" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" width="15"/>
+</span>
+<ul class="cs-drop-ul">
+<li class="cs-drop-li"><a class="cs-li-link cs-drop-link" href="#categories-dyeverse">Categories</a></li>
+<li class="cs-drop-li"><a class="cs-li-link cs-drop-link" href="#bestsellers-dyeverse">Best Sellers</a></li>
+<li class="cs-drop-li"><a class="cs-li-link cs-drop-link" href="#bundles">Bundles</a></li>
+</ul>
+</li>
+<li class="cs-li"><a class="cs-li-link" href="#testimonials-dyeverse">Reviews</a></li>
+<li class="cs-li"><a class="cs-li-link" href="#faq-709">FAQ</a></li>
+<li class="cs-li"><a class="cs-li-link" href="#contact-dyeverse">Contact</a></li>
+</ul>
+</div>
+</nav>
+<div class="cs-contact-group">
+<a class="cs-phone" href="#contact-dyeverse">
+<img alt="" aria-hidden="true" class="cs-phone-icon" decoding="async" height="24" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" width="24"/>
+                  Get a quote
+              </a>
+<div class="cs-social">
+<a aria-label="Instagram" class="cs-social-link cs-instagram" href="#">
+<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7zM18 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2z"></path>
+</svg>
+</a>
+<a aria-label="Facebook" class="cs-social-link cs-facebook" href="#">
+<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 22v-8h3l1-4h-4V7.5c0-1.2.3-2 2-2H17V2.1c-.9-.1-2-.1-3.2-.1C10.7 2 9 3.8 9 7v3H6v4h3v8h4z"></path>
+</svg>
+</a>
+<a aria-label="TikTok" class="cs-social-link cs-tiktok" href="#">
+<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 3c.5 3.1 2.3 4.9 5 5v3c-1.8 0-3.4-.6-5-1.8V16a6 6 0 1 1-6-6c.5 0 1 .1 1.5.2V13a3 3 0 1 0 2.5 2.9V3h2z"></path>
+</svg>
+</a>
+<a aria-label="Email" class="cs-social-link cs-email" href="mailto:hello@dyeverse.example">
+<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l8 5l8-5V6H4zm16 12V9l-8 5l-8-5v9h16z"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+<section id="hero-1946">
+<div class="cs-container">
+<div class="cs-content">
+<span class="cs-topper">Small-batch home fragrance</span>
+<h1 class="cs-title"><span class="cs-title-brand">DYEVERSE</span> candles, room sprays,<br/>and gift bundles</h1>
+<p class="cs-text">Hand-poured home fragrance for calm homes and cozy rituals. Small batches, clean ingredients, and a warm finish in every burn.</p>
+<div class="cs-button-group">
+<a class="cs-button-solid" href="#bestsellers-dyeverse">Shop Best Sellers</a>
+<a class="cs-button-transparent" href="#bundles">Explore Bundles</a>
+</div>
+</div>
+<div aria-label="Featured product and quick links" class="cs-visual">
+<div aria-label="Featured product" class="cs-image-group">
+<picture class="cs-picture">
+<img alt="DYEVERSE candle on a small table" decoding="async" height="576" loading="eager" src="images/product-candles.jpg" width="630">
+</picture>
+</div>
+<div aria-label="Quick links" class="cs-hero-panel">
+<div class="cs-hero-panel__head">
+<span class="cs-hero-panel__kicker">Browse</span>
+<span class="cs-hero-panel__title">Start here</span>
+</div>
+<a class="cs-hero-panel__link" href="#bestsellers-dyeverse">Shop</a>
+<a class="cs-hero-panel__link" href="#bestsellers-dyeverse">Best Sellers</a>
+<a class="cs-hero-panel__link" href="#bundles">Explore Bundles</a>
+</div>
+</div>
+<div aria-label="Product categories" class="cs-cards"><ul class="cs-card-group">
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">🕯️</span>
+<h3 class="cs-h3">Soy Candles</h3>
+<p class="cs-item-text">Clean burn, bold scent throw, and modern jars.</p>
+</li>
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">🌿</span>
+<h3 class="cs-h3">Diffusers</h3>
+<p class="cs-item-text">Long-lasting fragrance for entryways and desks.</p>
+</li>
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">💨</span>
+<h3 class="cs-h3">Room Sprays</h3>
+<p class="cs-item-text">Instant refresh for linens, rooms, and mood.</p>
+</li>
+<li class="cs-item" id="bundles">
+<span aria-hidden="true" class="cs-icon">🎁</span>
+<h3 class="cs-h3">Bundles</h3>
+<p class="cs-item-text">Gift sets and seasonal packs that just work.</p>
+</li>
+</ul></div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                    About                     -->
+<!-- ============================================ -->
+<section class="cs-about" id="about-dyeverse">
+<div class="cs-container">
+<div class="cs-about-grid">
+<div class="cs-about-content">
+<h2 class="cs-title">A small studio, a big obsession with scent</h2>
+<p class="cs-text">DYEVERSE is a home fragrance studio focused on simple ingredients and thoughtful design. We test, pour, label, and pack in small batches so every product feels intentional, not mass-produced.</p>
+<ul aria-label="DYEVERSE highlights" class="cs-checklist">
+<li>Hand-poured soy wax candles</li>
+<li>Phthalate-free fragrance blends</li>
+<li>Gift-ready bundles and seasonal drops</li>
+<li>Clear shipping, easy returns, helpful support</li>
+</ul>
+          <a class="cs-about-link" href="#contact-dyeverse"><span class="cs-link__label">Ask about custom orders</span></a>
+</div>
+<div class="cs-about-media">
+<picture class="cs-about-picture">
+<img alt="Reed diffuser and candle" decoding="async" height="576" loading="lazy" src="images/product-room-sprays.jpg" width="630">
+</picture>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                 Categories                   -->
+<!-- ============================================ -->
+<section class="cs-categories" id="categories-dyeverse">
+<div class="cs-container">
+<div class="cs-title-group">
+<p class="cs-topper">Shop by category</p>
+<h2 class="cs-title">Start with what you need</h2>
+<p class="cs-text">Quick picks for gifting, freshening a room, or setting the mood. (These buttons can link to your shop pages later.)</p>
+</div>
+<div class="cs-category-grid">
+<article class="cs-category-card">
+<img alt="Candles" class="cs-category-img" decoding="async" loading="lazy" src="images/product-candles.jpg"/>
+<div class="cs-category-body">
+<h3>Candles</h3>
+<p>Signature soy candles with warm, steady scent throw.</p>
+<a class="cs-link" href="#bestsellers-dyeverse"><span class="cs-link__label">Browse candles</span><span class="cs-link__desc">Hand-poured soy candles in jars &amp; tins</span></a>
+</div>
+</article>
+<article class="cs-category-card">
+<img alt="Room sprays and diffuser" class="cs-category-img" decoding="async" loading="lazy" src="images/product-room-sprays.jpg"/>
+<div class="cs-category-body">
+<h3>Room Sprays</h3>
+<p>Instant refresh for rooms, linens, and everyday life.</p>
+<a class="cs-link" href="#contact-dyeverse"><span class="cs-link__label">See spray options</span><span class="cs-link__desc">Room sprays for a quick refresh</span></a>
+</div>
+</article>
+<article class="cs-category-card">
+<img alt="Candle set" class="cs-category-img" decoding="async" loading="lazy" src="images/product-bundles.jpg"/>
+<div class="cs-category-body">
+<h3>Bundles</h3>
+<p>Gift sets that look good and smell even better.</p>
+<a class="cs-link" href="#bundles"><span class="cs-link__label">Explore bundles</span><span class="cs-link__desc">Gift-ready sets for every mood</span></a>
+</div>
+</article>
+<article class="cs-category-card">
+<img alt="Jar candles" class="cs-category-img" decoding="async" loading="lazy" src="images/product-diffusers.jpg"/>
+<div class="cs-category-body">
+<h3>Diffusers</h3>
+<p>Long-lasting fragrance for entryways and desks.</p>
+<a class="cs-link" href="#contact-dyeverse"><span class="cs-link__label">Ask what lasts longest</span><span class="cs-link__desc">Find your best burn-time match</span></a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                Scent Finder                  -->
+<!-- ============================================ -->
+<section class="cs-scent" id="scent-finder">
+<div class="cs-container">
+<div class="cs-scent-grid">
+<div class="cs-scent-content">
+<p class="cs-topper">Scent finder</p>
+<h2 class="cs-title">Pick a vibe, get a suggestion</h2>
+<p class="cs-text">A tiny interactive feature that makes the homepage feel smarter and more helpful.</p>
+<form autocomplete="off" class="cs-scent-form" id="scentForm">
+<label class="cs-label">Mood
+                <select class="cs-select" id="mood" required="">
+<option disabled="" selected="" value="">Choose one</option>
+<option value="calm">Calm / Relax</option>
+<option value="fresh">Fresh / Clean</option>
+<option value="cozy">Cozy / Warm</option>
+<option value="focus">Focus / Work</option>
+</select>
+</label>
+<label class="cs-label">Strength
+                <select class="cs-select" id="strength" required="">
+<option disabled="" selected="" value="">Choose one</option>
+<option value="light">Light</option>
+<option value="medium">Medium</option>
+<option value="strong">Strong</option>
+</select>
+</label>
+<button class="cs-button-solid" type="submit">Get recommendation</button>
+</form>
+<div aria-live="polite" class="cs-scent-result" id="scentResult"></div>
+</div>
+<div aria-hidden="true" class="cs-scent-media">
+<div class="cs-scent-badge">Small batches</div>
+<div class="cs-scent-badge">Gift-ready</div>
+<div class="cs-scent-badge">Clean ingredients</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                Best Sellers                  -->
+<!-- ============================================ -->
+<section class="cs-bestsellers" id="bestsellers-dyeverse">
+<div class="cs-container">
+<div class="cs-title-group">
+<p class="cs-topper">Best sellers</p>
+<h2 class="cs-title">Customer favourites</h2>
+<p class="cs-text">Product tiles for a more “real shop” feel. You can later connect these to your cart system.</p>
+</div>
+<div class="cs-product-grid">
+<article class="cs-product-card">
+<img alt="Signature soy candle" decoding="async" loading="lazy" src="images/product-candles.jpg"/>
+<div class="cs-product-body">
+<h3>Signature Soy Candle</h3>
+<p class="cs-muted">Warm amber • vanilla • soft spice</p>
+<div class="cs-product-row">
+<span class="cs-price">$29</span>
+<span aria-label="Rated 4.8 out of 5" class="cs-rating">★★★★★</span>
+</div>
+<a class="cs-button-solid cs-small" href="#contact-dyeverse">Add to cart</a>
+</div>
+</article>
+<article class="cs-product-card">
+<img alt="Room spray and diffuser" decoding="async" loading="lazy" src="images/product-room-sprays.jpg"/>
+<div class="cs-product-body">
+<h3>Room Spray</h3>
+<p class="cs-muted">Fresh linen • citrus • clean musk</p>
+<div class="cs-product-row">
+<span class="cs-price">$19</span>
+<span aria-label="Rated 4.7 out of 5" class="cs-rating">★★★★★</span>
+</div>
+<a class="cs-button-solid cs-small" href="#contact-dyeverse">Add to cart</a>
+</div>
+</article>
+<article class="cs-product-card">
+<img alt="Jar candle gift" decoding="async" loading="lazy" src="images/product-diffusers.jpg"/>
+<div class="cs-product-body">
+<h3>Reed Diffuser</h3>
+<p class="cs-muted">Botanical • green notes • soft woods</p>
+<div class="cs-product-row">
+<span class="cs-price">$35</span>
+<span aria-label="Rated 4.9 out of 5" class="cs-rating">★★★★★</span>
+</div>
+<a class="cs-button-solid cs-small" href="#contact-dyeverse">Add to cart</a>
+</div>
+</article>
+<article class="cs-product-card">
+<img alt="Candle bundle" decoding="async" loading="lazy" src="images/product-bundles.jpg"/>
+<div class="cs-product-body">
+<h3>Gift Bundle</h3>
+<p class="cs-muted">Pick 3 minis + gift wrap included</p>
+<div class="cs-product-row">
+<span class="cs-price">$49</span>
+<span aria-label="Rated 4.8 out of 5" class="cs-rating">★★★★★</span>
+</div>
+<a class="cs-button-solid cs-small" href="#contact-dyeverse">Add to cart</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                   Process                    -->
+<!-- ============================================ -->
+<section id="services-1728">
+<div class="cs-container">
+<div class="cs-content">
+<p class="cs-topper">Our process</p>
+<h2 class="cs-title">How it works (simple steps)</h2>
+<p class="cs-text">I kept the process short so it’s easy to understand: you choose a scent, we pour and pack, then we dispatch fast and you enjoy.</p>
+</div>
+<ul aria-label="Order process" class="cs-card-group">
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">🧾</span>
+<h3 class="cs-h3">1) Choose &amp; order</h3>
+<p class="cs-item-text">Pick a product and scent family (fresh, floral, cozy, or bold).</p>
+</li>
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">🧪</span>
+<h3 class="cs-h3">2) Pour &amp; cure</h3>
+<p class="cs-item-text">We hand-pour in small batches and cure properly for best burn.</p>
+</li>
+<li class="cs-item">
+<span aria-hidden="true" class="cs-icon">📦</span>
+<h3 class="cs-h3">3) Pack &amp; deliver</h3>
+<p class="cs-item-text">Packed with care, dispatched quickly, and delivered to your door.</p>
+</li>
+</ul>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                 Testimonials                 -->
+<!-- ============================================ -->
+<section class="cs-testimonials" id="testimonials-dyeverse">
+<div class="cs-container">
+<div class="cs-title-group">
+<p class="cs-topper">Reviews</p>
+<h2 class="cs-title">What people say</h2>
+<p class="cs-text">Short reviews make the page feel more trustworthy without being too heavy.</p>
+</div>
+<div class="cs-testimonial-grid">
+<article class="cs-testimonial">
+<p class="cs-quote">The scent throw is honestly perfect. Not overpowering, just fills the room in a nice way.</p>
+<p class="cs-author">Ayesha • 5★</p>
+</article>
+<article class="cs-testimonial">
+<p class="cs-quote">The bundle looked so gift-ready that I didn’t even need to wrap it. Clean packaging, fast delivery.</p>
+<p class="cs-author">Ryan • 5★</p>
+</article>
+<article class="cs-testimonial">
+<p class="cs-quote">Room spray is my daily reset. Two sprays and it feels like a fresh hotel room.</p>
+<p class="cs-author">Nabila • 4.5★</p>
+</article>
+</div>
+</div>
+</section>
+<!-- ============================================ -->
+<!--                   CTA                        -->
+<!-- ============================================ -->
+<section id="cta-262">
+<div class="cs-container">
+<div class="cs-left-section">
+<h2 class="cs-title">Want a custom bundle?</h2>
+<p class="cs-text">Tell us the occasion and the vibe. We’ll suggest a bundle and package it gift-ready.</p>
+<a class="cs-button-solid" href="#contact-dyeverse">Request a custom bundle</a>
+</div>
+</div>
+<picture aria-hidden="true" class="cs-background">
+<img alt="Candles bundle background" decoding="async" height="1280" loading="lazy" src="images/product-bundles.jpg" width="1920"/>
+</picture>
+</section>
+<!-- ============================================ -->
+<!--                     FAQ                      -->
+<!-- ============================================ -->
+<section class="dv-faq" id="faq-709">
+<div class="cs-container">
+<div class="dv-faq-head">
+<span class="cs-topper">FAQ</span>
+<h2 class="cs-title">Common questions</h2>
+<p class="cs-text">Quick answers about burn time, wax, gifting, and shipping.</p>
+</div>
+<div class="dv-faq-grid" role="list">
+<div role="listitem">
+<button aria-label="How long do your candles burn for?" class="dv-faq-card" data-dialog="faq-dialog-1" type="button">
+<span class="dv-faq-media">
+<img alt="FAQ: Burn time" loading="lazy" src="images/faq-burn.jpg"/>
+</span>
+<span class="dv-faq-body">
+<span class="dv-faq-kicker">Burn time</span>
+<span class="dv-faq-title">How long do your candles burn for?</span>
+<span class="dv-faq-link">Learn more <span aria-hidden="true">›</span></span>
+</span>
+</button>
+</div>
+<div role="listitem">
+<button aria-label="Do you use soy wax?" class="dv-faq-card" data-dialog="faq-dialog-2" type="button">
+<span class="dv-faq-media">
+<img alt="FAQ: Ingredients" loading="lazy" src="images/faq-ingredients.webp"/>
+</span>
+<span class="dv-faq-body">
+<span class="dv-faq-kicker">Ingredients</span>
+<span class="dv-faq-title">Do you use soy wax?</span>
+<span class="dv-faq-link">Learn more <span aria-hidden="true">›</span></span>
+</span>
+</button>
+</div>
+<div role="listitem">
+<button aria-label="Can I gift a bundle with a note?" class="dv-faq-card" data-dialog="faq-dialog-3" type="button">
+<span class="dv-faq-media">
+<img alt="FAQ: Gifting" loading="lazy" src="images/faq-gifting.jpg"/>
+</span>
+<span class="dv-faq-body">
+<span class="dv-faq-kicker">Gifting</span>
+<span class="dv-faq-title">Can I gift a bundle with a note?</span>
+<span class="dv-faq-link">Learn more <span aria-hidden="true">›</span></span>
+</span>
+</button>
+</div>
+<div role="listitem">
+<button aria-label="What’s your shipping and returns policy?" class="dv-faq-card" data-dialog="faq-dialog-4" type="button">
+<span class="dv-faq-media">
+<img alt="FAQ: Shipping" loading="lazy" src="images/faq-shipping.jpg"/>
+</span>
+<span class="dv-faq-body">
+<span class="dv-faq-kicker">Shipping</span>
+<span class="dv-faq-title">What’s your shipping and returns policy?</span>
+<span class="dv-faq-link">Learn more <span aria-hidden="true">›</span></span>
+</span>
+</button>
+</div>
+</div>
+<div class="dv-faq-dialogs">
+<dialog aria-label="How long do your candles burn for?" class="dv-dialog" id="faq-dialog-1">
+<div class="dv-dialog-inner">
+<button aria-label="Close" class="dv-dialog-close" data-close="" type="button">✕</button>
+<h3 class="dv-dialog-title">How long do your candles burn for?</h3>
+<p class="dv-dialog-text">It depends on the jar size, but most are designed for long, steady burns. Trimming the wick (about 5mm) helps the candle last longer.</p>
+</div>
+</dialog>
+<dialog aria-label="Do you use soy wax?" class="dv-dialog" id="faq-dialog-2">
+<div class="dv-dialog-inner">
+<button aria-label="Close" class="dv-dialog-close" data-close="" type="button">✕</button>
+<h3 class="dv-dialog-title">Do you use soy wax?</h3>
+<p class="dv-dialog-text">Yes. Our candles are made with soy wax blends chosen for clean, even burns and a consistent scent throw.</p>
+</div>
+</dialog>
+<dialog aria-label="Can I gift a bundle with a note?" class="dv-dialog" id="faq-dialog-3">
+<div class="dv-dialog-inner">
+<button aria-label="Close" class="dv-dialog-close" data-close="" type="button">✕</button>
+<h3 class="dv-dialog-title">Can I gift a bundle with a note?</h3>
+<p class="dv-dialog-text">Absolutely. Add a short note at checkout and we’ll include it in the package, gift-ready.</p>
+</div>
+</dialog>
+<dialog aria-label="What’s your shipping and returns policy?" class="dv-dialog" id="faq-dialog-4">
+<div class="dv-dialog-inner">
+<button aria-label="Close" class="dv-dialog-close" data-close="" type="button">✕</button>
+<h3 class="dv-dialog-title">What’s your shipping and returns policy?</h3>
+<p class="dv-dialog-text">We ship quickly and package carefully. If something arrives damaged or isn’t right, contact us and we’ll make it right.</p>
+</div>
+</dialog>
+</div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!--                   Contact                    -->
+<!-- ============================================ -->
+<section class="cs-contact" id="contact-dyeverse">
+<div class="cs-container">
+<div class="rh-contact-split">
+<div class="cs-title-group rh-contact-left">
+<p class="cs-topper">Contact</p>
+<h2 class="cs-title">Tell us what you want to build (in scent form)</h2>
+<p class="cs-text">Ask about bundles, wholesale, custom labels, or bulk orders for events.</p>
+<ul aria-label="Contact details" class="rh-contact-meta">
+<li class="rh-meta-item">
+<span aria-hidden="true" class="rh-meta-ico">☎</span>
+<a class="rh-meta-link" href="tel:+18338364832"><span class="cs-link__label">(833) 836-4832</span></a>
+</li>
+<li class="rh-meta-item">
+<span aria-hidden="true" class="rh-meta-ico">✉</span>
+<a class="rh-meta-link" href="mailto:hello@dyeverse.com"><span class="cs-link__label">hello@dyeverse.com</span></a>
+</li>
+</ul>
+</div>
+<div class="rh-contact-card">
+<form class="cs-contact-form" id="contactForm">
+<div class="cs-form-row">
+<label class="cs-label">Name
+                  <input class="cs-input" name="name" placeholder="Input" required=""/>
+</label>
+<label class="cs-label">Email
+                  <input class="cs-input" name="email" placeholder="Input" required="" type="email"/>
+</label>
+</div>
+<label class="cs-label cs-label--full">
+              Message
+              <textarea class="cs-textarea" name="message" placeholder="Input" required="" rows="6"></textarea>
+</label>
+<button class="cs-button-solid" type="submit">Submit</button>
+<p class="cs-form-note">This form is front-end only for now (no database). It can be connected later.</p>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ============================================ -->
+<!--                   Footer                     -->
+<!-- ============================================ -->
+<footer id="cs-footer-308">
+<div class="cs-container">
+<div class="cs-logo-group">
+<a aria-label="go back to home" class="cs-logo" href="#hero-1946">
+<span class="cs-logo-text">DYEVERSE</span>
+</a>
+<p class="cs-text">Small-batch candles and home fragrance. Built for calm spaces and better rituals.</p>
+</div>
+<ul aria-label="Footer navigation" class="cs-nav">
+<li class="cs-nav-li"><span class="cs-header">Shop</span></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#categories-dyeverse">Categories</a></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#bestsellers-dyeverse">Best sellers</a></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#bundles">Bundles</a></li>
+</ul>
+<ul aria-label="Company" class="cs-nav">
+<li class="cs-nav-li"><span class="cs-header">Company</span></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#about-dyeverse">About</a></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#faq-709">FAQ</a></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#contact-dyeverse">Contact</a></li>
+</ul>
+<ul aria-label="Contact" class="cs-nav cs-contact">
+<li class="cs-nav-li"><span class="cs-header">Contact</span></li>
+<li class="cs-nav-li"><a class="cs-nav-link" href="#contact-dyeverse">Email us</a></li>
+<li class="cs-nav-li"><span class="cs-nav-link">Based in Indonesia</span></li>
+</ul>
+</div>
+<div class="cs-bottom">
+<span class="cs-copyright">© <span id="cs-year">2026</span> DYEVERSE.</span>
+</div>
+</footer>
+</body>
+</html>
